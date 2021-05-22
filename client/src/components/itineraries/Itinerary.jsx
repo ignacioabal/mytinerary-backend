@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import './itinerary.css'
+import { connect } from 'react-redux'
+import fetchItineraries from "../../redux/actions/itinActions"
 
-export default class Itinerary extends Component {
+
+export class Itinerary extends Component {
 
 
   render() {
