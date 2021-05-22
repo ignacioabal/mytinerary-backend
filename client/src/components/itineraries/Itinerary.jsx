@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import fetchItineraries from "../../redux/actions/itinActions"
 
 
-export class Itinerary extends Component {
+export default class Itinerary extends Component {
 
 
   render() {
@@ -41,16 +41,16 @@ export class Itinerary extends Component {
   }
 }
 
-const mapStateProps = state => {
-  return {
-    itins: state.itineraryReducer.itins
-  };
-};
+// const mapStateProps = state => {
+//   return {
+//     itineraries: state.itineraryReducer.itineraries
+//   };
+// };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchItineraries: url => dispatch(fetchItineraries(url))
-  };
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     fetchItineraries: url => dispatch(fetchItineraries(url))
+//   };
+// };
 
-export default connect(mapStateProps, mapDispatchToProps)(Itinerary);
+// export default connect(mapStateProps, mapDispatchToProps)(Itinerary);

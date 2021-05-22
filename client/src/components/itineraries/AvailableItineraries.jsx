@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import React, { Component } from 'react'
 import Itinerary from './Itinerary'
 import fetchItineraries from '../../redux/actions/itinActions'
+import CityHeader from './cityHeader/CityHeader'
 
 class AvItineraries extends Component {
   constructor(props) {
@@ -12,8 +13,8 @@ class AvItineraries extends Component {
   }
 
   componentDidMount() {
-    let { city } = this.props.match.params
-    this.props.fetchItineraries(city)
+    let { country, city } = this.props.match.params
+    this.props.fetchItineraries(country, city)
 
   }
 
@@ -31,6 +32,7 @@ class AvItineraries extends Component {
   render() {
     return (
       <React.Fragment>
+        <CityHeader name={this.props.match.params.city}/>
         {this.renderItineraries(this.props.itineraries)}
       </React.Fragment>
     )
@@ -46,7 +48,7 @@ const mapStateProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchItineraries: (city) => dispatch(fetchItineraries(city)),
+    fetchItineraries: (country, city) => dispatch(fetchItineraries(country, city)),
   }
 }
 export default connect(mapStateProps, mapDispatchToProps)(AvItineraries)

@@ -25,7 +25,8 @@ class App extends React.Component {
                     <Route path="/login" exact component={Login} />
                     <Route path="/register" exact component={Register} />
                     <Route path="/cities" exact component={Cities} />
-                    <Route path="itineraries/:country/:city" exact render={(props)=><AvItineraries {... props}/>}/>
+                    <Route path="/itineraries/:country/:city" exact render={(props)=><AvItineraries {... props}/>}/>
+                    {/* <Route path="/itineraries/:city" exact component={AvItineraries}/> */}
 
                 </div>
             </BrowserRouter>
