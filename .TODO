@@ -1,0 +1,30 @@
+Finish itinerary component - DONE
+    -ADD CAROUSEL OF ACTIVITIES/COMMENTS
+
+Finish Redux-Itin connection - DONE
+    -get uri for the different cities? - DONE
+
+Fetch data and pour into itin components - DONE
+
+Make each "See More" button individual - WIP
+    -Make different urls viable(?) - idk
+    -ACTIVITIES carousel - TOTALLY WIP
+
+--moved on to sprint 4
+
+Create register & login page(visual) - DONE
+
+Create register & login page(Functionality) - WIP
+
+BACK-END
+
+    + User Schema model - DONE
+    + User Route - DONE
+    + User Validation - DONE(use express-validator) - DONE
+    
+    + Register - DONE
+    
+    + Login - WIP
+        - db find by email and token - DONE
+        - token auth - WIP
+    

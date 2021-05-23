@@ -1,29 +1,32 @@
-import React from 'react';
-import Header from './components/header/Header';
-import Home from './components/home/Home';
-import Login from './components/users/Login';
-import Register from './components/users/Register';
-import Cities from './components/cities/Cities'
-import { BrowserRouter, Route } from 'react-router-dom';
-import './components/util/LandingPage.css';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/js/dist/dropdown'; import 'bootstrap/js/dist/carousel';
-import AvItineraries from './components/itineraries/AvailableItineraries';
+// ----- REACT DEPENDENCIES
+import React from "react";
+import { BrowserRouter, Route } from "react-router-dom";
 
+// ----- COMPONENTS
+import Home from "./components/home/Home";
+import Login from "./components/users/Login/Login";
+import Register from "./components/users/Register/Register";
+import Cities from "./components/cities/Cities";
+import "./components/util/LandingPage.css";
+import AvItineraries from "./components/itineraries/AvailableItineraries";
 
+//------- BOOTSTRAP
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/js/dist/dropdown";
+import "bootstrap/js/dist/carousel";
+import "bootstrap/js/dist/collapse";
 
 class App extends React.Component {
     render() {
         return (
             <BrowserRouter>
                 <div className="App container">
-                    <Header />
-
                     <Route path="/" exact component={Home} />
                     <Route path="/login" exact component={Login} />
                     <Route path="/register" exact component={Register} />
                     <Route path="/cities" exact component={Cities} />
-                    <Route path="/cities/barcelona" exact component={AvItineraries}/>
+                    <Route path="/itineraries/:country/:city" exact render={(props)=><AvItineraries {... props}/>}/>
+                    {/* <Route path="/itineraries/:city" exact component={AvItineraries}/> */}
 
                 </div>
             </BrowserRouter>
