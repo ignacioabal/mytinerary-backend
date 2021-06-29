@@ -1,15 +1,9 @@
 const express = require("express");
 const router = express.Router();
-<<<<<<< HEAD
 const bcrypt = require("bcrypt");
 const config = require("config");
 const jwt = require("jsonwebtoken");
 
-=======
-const bcrypt = require("bcryptjs");
-const jwt = require('jsonwebtoken');
-const config = require('config');
->>>>>>> e44a8b0ed51982b67e34f4b63e10a4f0c949353c
 const { check, validationResult } = require("express-validator");
 
 //User model
@@ -70,38 +64,6 @@ router.post("/register", validationArray, (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-<<<<<<< HEAD
-  /*
-  if (!errors.isEmpty()) {
-    return res.status(422).json({ errors: errors.array() });
-  }*/
-
-  User.findOne({ email: req.body.email }).then(user => {
-    if (!user) return res.status(400).json({ email: "User does not exist." });
-
-    bcrypt.compare(req.body.password, user.password).then(isMatch => {
-      if (!isMatch) return res.status(400).json({ msg: "invalid credentials" });
-
-      jwt.sign({ id: user.id }, config.get("jwtSecret"), (err, token) => {
-        if (err) throw err;
-        res.json({
-          token,
-          user: {
-            id: user.id,
-            username: user.username,
-            email: user.email,
-            password: user.password,
-            firstname: user.firstname,
-            lastname: user.lastname
-          }
-        });
-      });
-    });
-  })
-    .catch(err => console.log(err));
-});
-
-=======
 
   User.findOne({ email: req.body.email }).then(user => { 
     if (!user) { 
@@ -136,5 +98,4 @@ router.post("/login", (req, res) => {
 .catch(err => res.send(err));
 })
 
->>>>>>> e44a8b0ed51982b67e34f4b63e10a4f0c949353c
 module.exports = router;
