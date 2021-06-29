@@ -42,7 +42,7 @@ class Itinerary extends Component {
 
 const mapStateProps = state => {
   return {
-    itins: state.itineraryReducer.itins
+    itineraries: state.itineraryReducer.itineraries
   };
 };
 

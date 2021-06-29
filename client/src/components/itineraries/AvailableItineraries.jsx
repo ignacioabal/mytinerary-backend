@@ -12,8 +12,8 @@ class AvItineraries extends Component {
   }
 
   componentDidMount() {
-    let { city } = this.props.match.params
-    this.props.fetchItineraries(city)
+    let { country, city } = this.props.match.params
+    this.props.fetchItineraries(country, city)
 
   }
 
@@ -38,15 +38,14 @@ class AvItineraries extends Component {
 }
 
 const mapStateProps = (state) => {
-  console.log(state)
   return {
-    itineraries: state.itinReducer.itineraries,
-    loading: state.itinReducer.loading  
+    itineraries: state.itineraryReducer.itineraries,
+    loading: state.itineraryReducer.loading  
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchItineraries: (city) => dispatch(fetchItineraries(city)),
+    fetchItineraries: (country, city) => dispatch(fetchItineraries(country, city)),
   }
 }
 export default connect(mapStateProps, mapDispatchToProps)(AvItineraries)

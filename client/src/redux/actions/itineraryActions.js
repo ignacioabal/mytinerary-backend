@@ -1,9 +1,9 @@
-export default function fetchItineraries(city) {
+export default function fetchItineraries(country, city) {
 
   return dispatch => {
       dispatch(fetchItinerariesRequest());
 
-      const uri = `http://localhost:5000/cities/${city}`;
+      const uri = `http://localhost:5000/itineraries/${country}/${city}`;
 
 
       fetch(uri)

@@ -16,7 +16,7 @@ const itineraryReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         error: null,
-        itins: action.payload
+        itineraries: action.payload
       };
     case "FETCH_ITINERARIES_FAILURE":
       return {

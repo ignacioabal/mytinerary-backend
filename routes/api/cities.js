@@ -16,14 +16,14 @@ router.get("/cities", (req, res) => {
 
 router.get("/itineraries/:country/:city", (req, res) => {
     let cityRequested = req.params.city;
-
+    let countryRequested = req.params.country;
   //capitalize the first letter of the requested city
   cityRequested =
     cityRequested.charAt(0).toUpperCase() + cityRequested.slice(1);
 
-  country = country.charAt(0).toUpperCase() + country.slice(1);
+  countryRequested = countryRequested.charAt(0).toUpperCase() + countryRequested.slice(1);
 
-  City.findOne({ name: cityRequested, country: country }).then(city =>
+  City.findOne({ name: cityRequested, country: countryRequested }).then((city) =>
     Itinerary.find({ city_id: city._id })
       .then(itin => res.send(itin))
       .catch(err => console.log(err))
