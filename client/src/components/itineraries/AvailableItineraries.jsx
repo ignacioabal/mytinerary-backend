@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import React, { Component } from 'react'
 import Itinerary from './Itinerary'
-import fetchItineraries from '../../redux/actions/itinActions'
+import fetchItineraries from '../../redux/actions/itineraryActions'
 
 class AvItineraries extends Component {
   constructor(props) {

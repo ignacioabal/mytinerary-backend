@@ -21,7 +21,6 @@ class App extends React.Component {
         return (
             <BrowserRouter>
                 <div className="App container">
-                    <Header />
 
                     <Route path="/" exact component={Home} />
                     <Route path="/login" exact component={Login} />

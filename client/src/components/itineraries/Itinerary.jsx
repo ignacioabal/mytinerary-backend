@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import  fetchItineraries  from "../../redux/actions/itineraryActions";
+import { connect } from 'react-redux'
 import './itinerary.css'
 
-export default class Itinerary extends Component {
+class Itinerary extends Component {
 
 
   render() {
@@ -46,7 +48,7 @@ const mapStateProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchItineraries: url => dispatch(fetchItineraries(url))
+    fetchItineraries: (city) => dispatch(fetchItineraries(city))
   };
 };
 

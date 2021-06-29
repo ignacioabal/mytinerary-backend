@@ -1,19 +1,24 @@
-export default function fetchItineraries(url) {
-  return dispatch => {
-    dispatch(fetchItinerariesRequest());
+export default function fetchItineraries(city) {
 
-    fetch(url)
-      .then(resp => resp.json())
-      .then(res => {
-        return dispatch(fetchItinerariesSuccess(res));
-      })
-      .catch(err => dispatch(fetchItinerariesError(err)));
-  };
+  return dispatch => {
+      dispatch(fetchItinerariesRequest());
+
+      const uri = `http://localhost:5000/cities/${city}`;
+
+
+      fetch(uri)
+          .then(resp => resp.json())
+          .then(res => {
+              
+              return dispatch(fetchItinerariesSuccess(res))
+          })
+      .catch(err => dispatch(fetchItinerariesError(err)))
+  }
 }
 
-const fetchItinerariesSuccess = itins => ({
+const fetchItinerariesSuccess = itineraries => ({
   type: "FETCH_ITINERARIES_SUCCESS",
-  payload: itins
+  payload: itineraries
 });
 
 const fetchItinerariesRequest = () => ({

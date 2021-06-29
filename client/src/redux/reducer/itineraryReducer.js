@@ -1,5 +1,5 @@
 const initialState = {
-  itins: [],
+  itineraries: [],
   loading: false,
   error: null
 };
