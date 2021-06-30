@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import Carousel from "./ActivitiesCarousel";
 
-export default class Details extends Component {
+export default class Activities extends Component {
   render() {
+    let {compId, acts} =this.props; 
     return (
-      <div className="">
-        <div className="collapse" id={this.props.compId}>
-          <Carousel acts={this.props.acts}></Carousel>
+      <div id="itinActivities">
+        <div className="collapse" id={compId}>
+          <Carousel acts={acts}></Carousel>
         </div>
         <div id="btnDet">
           <h4>
             <a
-              href={"#" + this.props.compId}
+              href={"#" + compId}
               className="btn  btn-block bg-dark text-white"
               role="button"
               data-toggle="collapse"

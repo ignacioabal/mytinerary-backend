@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import React, { Component } from 'react'
-import Itinerary from './Itinerary'
+import Itinerary from './Itinerary/Itinerary'
 import CityHeader from './cityHeader/CityHeader'
 import fetchItineraries from '../../redux/actions/itineraryActions'
 

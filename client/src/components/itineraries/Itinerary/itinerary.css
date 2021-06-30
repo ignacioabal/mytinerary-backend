@@ -38,6 +38,13 @@
 }
 
 #btnDet {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
+
+.row{
+  justify-content: center;
+}
+
+
+
