@@ -8,7 +8,7 @@ class CityList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filteredCities: []
+      filteredCities: [],
     };
   }
 
@@ -30,6 +30,7 @@ class CityList extends Component {
   };
 
   renderList(elem) {
+    if(this.props.loading) return <div className="spinner-border mt-5"></div>
     return elem.map(city => {
       return (
         <div className="card cities" key={city._id}>
@@ -60,7 +61,8 @@ class CityList extends Component {
 
 const mapStateProps = state => {
   return {
-    cities: state.cityReducer.cities
+    cities: state.cityReducer.cities,
+    loading: state.cityReducer.loading
   };
 };
 

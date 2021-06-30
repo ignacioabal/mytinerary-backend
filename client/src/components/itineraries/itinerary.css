@@ -13,7 +13,8 @@
 }
 
 #itinerary {
-  margin: 5% 0;
+  margin: 5% 15px;  
+  box-shadow: 3em;
 }
 
 #details {

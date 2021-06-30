@@ -1,6 +1,6 @@
 import React from 'react';
 import Avatar from './../users/Avatar.jsx';
-import NavButton from './NavButton';
+import NavButton from '../Nav/NavButton';
 import './Header.css';
 
 

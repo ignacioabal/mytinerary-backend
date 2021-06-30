@@ -1,19 +1,21 @@
 import { connect } from 'react-redux'
 import React, { Component } from 'react'
 import Itinerary from './Itinerary'
+import CityHeader from './cityHeader/CityHeader'
 import fetchItineraries from '../../redux/actions/itineraryActions'
 
 class AvItineraries extends Component {
   constructor(props) {
     super(props)
+    let { country, city } = this.props.match.params
     this.state = {
-      loading:this.props.loading
-    }
+      cityName:city,
+      countryName:country,
+      }
   }
 
   componentDidMount() {
-    let { country, city } = this.props.match.params
-    this.props.fetchItineraries(country, city)
+    this.props.fetchItineraries(this.state.countryName,this.state.cityName)
 
   }
 
@@ -21,16 +23,18 @@ class AvItineraries extends Component {
   renderItineraries(elem) {   
     if(!this.props.loading){     
       return elem.map((itin) => {
-        return <Itinerary itinerary={itin} />
+        return <Itinerary itinerary={itin} key={itin._id} />
       })
     }else{
-      return <h1> loading </h1>
+      return( <div className="spinner-border mt-5"></div>)
     }
   }
 
   render() {
+    let {cityName,countryName}=this.state;
     return (
       <React.Fragment>
+        <CityHeader cityName={cityName} countryName={countryName}/>
         {this.renderItineraries(this.props.itineraries)}
       </React.Fragment>
     )

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Avatar from "../users/Avatar";
-import NavButton from "../header/NavButton";
+import NavButton from "../Nav/NavButton";
 import "./header.css";
 
 export default class MiniHeader extends Component {

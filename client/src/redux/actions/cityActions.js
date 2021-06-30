@@ -1,5 +1,4 @@
 export default function fetchCities() {
-    // console.log("hola");
     
     return dispatch => {
         dispatch(fetchCitiesRequest());

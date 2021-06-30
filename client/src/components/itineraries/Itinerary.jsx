@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
-import  fetchItineraries  from "../../redux/actions/itineraryActions";
-import { connect } from 'react-redux'
 import './itinerary.css'
 
-class Itinerary extends Component {
-
+export default class Itinerary extends Component {
 
   render() {
-    var { user, name, likes, duration, tags, price } = this.props.itinerary
+    var { _id, user, name, likes, duration, tags, price } = this.props.itinerary
     return (
-      <article id="itinerary" className="row border">
+      <article id="itinerary" className="row border" key={_id}>
         <div id="user" className="col">
           <img
             src={require('../../img/defaultAvatar.png')}
@@ -30,7 +27,7 @@ class Itinerary extends Component {
           <div id="tags">
             <ul className="nav">
               {tags.map(tag =>{
-                  return <li className="nav-item">#{tag}</li>
+                  return <li className="nav-item" key={tag}>#{tag}</li>
               })}
             </ul>
           </div>
@@ -40,16 +37,5 @@ class Itinerary extends Component {
   }
 }
 
-const mapStateProps = state => {
-  return {
-    itineraries: state.itineraryReducer.itineraries
-  };
-};
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchItineraries: (city) => dispatch(fetchItineraries(city))
-  };
-};
-
-export default connect(mapStateProps, mapDispatchToProps)(Itinerary);
+// export default connect(mapStateProps, mapDispatchToProps)(Itinerary);

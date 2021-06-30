@@ -8,7 +8,7 @@ export default class Avatar extends React.Component {
 
     render() {
         return (
-            <div className="DefAvatar dropdown">
+            <div className="DefAvatar dropdown pt-1">
                 <div className="btn-group dropright">
                     <button className="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src={this.props.img} alt={this.props.name} className="img-fluid" />
