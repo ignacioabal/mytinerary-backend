@@ -2,8 +2,9 @@ import React, { useState, Component } from "react";
 import ItemsCarousel from "react-items-carousel";
 import "./Carousel.css";
 
-export default function Carousel() {
+export default function Carousel(props) {
   const [activeItemIndex, setActiveItemIndex] = useState(0);
+  let { activities } = props;
   const chevronWidth = 40;
   return (
     <div id="actCar">
@@ -18,9 +19,17 @@ export default function Carousel() {
         chevronWidth={chevronWidth}
         infiniteLoop={true}
       >
-        <div className="carItem">Activity 1</div>
-        <div className="carItem">Activity 2</div>
-        <div className="carItem">Activity 3</div>
+        {activities.map(act => {
+          return (
+            <div>
+              <div className="carItem"></div>
+              <div>
+                {act}
+              </div>
+            </div>
+          )
+        })}
+
       </ItemsCarousel>
     </div>
   );

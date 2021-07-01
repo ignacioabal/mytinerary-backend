@@ -14,7 +14,7 @@ export default function Activities(props) {
    
     <Collapse in={open} >
       <div id="example-collapse-text">
-      <Carousel></Carousel>
+      <Carousel activities={acts}></Carousel>
       </div>
     </Collapse>
     <Button
