@@ -10,3 +10,19 @@
 #imgUpload {
   display: none;
 }
+
+h3 {
+  text-align:left;
+}
+
+.form-control {
+  width: 80%;
+  justify-content: center;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.btn {
+  margin-top: 5%;
+  width: 20%;
+}

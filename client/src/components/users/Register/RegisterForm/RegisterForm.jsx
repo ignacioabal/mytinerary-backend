@@ -1,39 +1,58 @@
 import React, { Component } from "react";
 import Image from "./UserImage";
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+import {Formik} from 'formik'
 
 export default class RegisterForm extends Component {
   render() {
     return (
       <>
-        <form className="form-group">
-          <h3 className="text-lead">Create New Account</h3>
-          {/* <h6 className="text-muted">Create Your own Itineraries</h6> */}
+        <Form>
+          <h3>Create New Account</h3>
           <Image></Image>
-          Username: <input className="form-control" type="text" id="username" />
-          Password:{" "}
-          <input className="form-control" type="password" id="password" />
-          E-mail: <input className="form-control" type="email" id="mail" />
-          First Name:{" "}
-          <input className="form-control" type="text" id="firstName" />
-          Last Name:{" "}
-          <input className="form-control" type="text" id="lastName" />
-          Country:{" "}
-          <select className="form-control" name="" id="">
-            <option value="England">England</option>
-            <option value="France">France</option>
-            <option value="Germany">Germany</option>
-            <option value="Holland">Holland</option>
-            <option value="Ireland">Ireland</option>
-            <option value="Spain">Spain</option>
-            <option value="United States">United States</option>
-          </select>
-          <input type="checkbox" id="tnc" />
-          <label htmlFor="tnc">
-            I agree MYtinerary's <a href="#">Terms & Conditions</a>.
-          </label>
-          <br />
-          <input type="submit" value="Ok!" />
-        </form>
+          <Form.Group>
+            <Form.Label>Username</Form.Label>
+            <Form.Control ></Form.Control>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>E-mail</Form.Label>
+            <Form.Control type='email'></Form.Control>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Password</Form.Label>
+            <Form.Control type='password'></Form.Control>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Confirm password</Form.Label>
+            <Form.Control type='password'></Form.Control>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>First name</Form.Label>
+            <Form.Control></Form.Control>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Last name</Form.Label>
+            <Form.Control></Form.Control>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Country</Form.Label>
+            <Form.Control as='select'>
+              <option value="England">England</option>
+              <option value="France">France</option>
+              <option value="Germany">Germany</option>
+              <option value="Holland">Holland</option>
+              <option value="Ireland">Ireland</option>
+              <option value="Spain">Spain</option>
+              <option value="United States">United States</option>
+            </Form.Control>
+          </Form.Group>
+          <Form.Group>
+            <Form.Check type="checkbox" label="I agree MYtinerary's terms and conditions." />
+            <Form.Text className="text/muted"><a href="#">Terms & Conditions</a></Form.Text>
+            <Button type='submit'> Submit </Button>
+          </Form.Group>
+        </Form>        
       </>
     );
   }
