@@ -8,6 +8,7 @@
     "jquery": "^3.6.0",
     "mytinerary-backend": "file:..",
     "react": "^16.14.0",
+    "react-bootstrap": "^1.6.1",
     "react-dom": "^16.14.0",
     "react-items-carousel": "^2.8.0",
     "react-redux": "^7.2.4",

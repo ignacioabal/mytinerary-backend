@@ -1,27 +1,31 @@
-import React, { Component } from "react";
+import React, { useState, useContext } from "react";
 import Carousel from "./ActivitiesCarousel";
+import Accordion from 'react-bootstrap/Accordion'
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
+import Collapse from 'react-bootstrap/Collapse'
 
-export default class Activities extends Component {
-  render() {
-    let {compId, acts} =this.props; 
-    return (
-      <div id="itinActivities">
-        <div className="collapse" id={compId}>
-          <Carousel acts={acts}></Carousel>
-        </div>
-        <div id="btnDet">
-          <h4>
-            <a
-              href={"#" + compId}
-              className="btn  btn-block bg-dark text-white"
-              role="button"
-              data-toggle="collapse"
-            >
-              See More
-            </a>
-          </h4>
-        </div>
+export default function Activities(props) {
+  const [open, setOpen] = useState(false);
+  let { itinId, acts } = props;
+
+  return (
+    <div className="w-100">
+   
+    <Collapse in={open} >
+      <div id="example-collapse-text">
+      <Carousel></Carousel>
       </div>
-    );
-  }
+    </Collapse>
+    <Button
+      onClick={() => setOpen(!open)}
+      aria-controls="example-collapse-text"
+      aria-expanded={open}  
+
+    >
+      See More
+    </Button>
+  </div>
+  )
 }
+

@@ -13,7 +13,7 @@
 }
 
 #itinerary {
-  margin: 5% 15px;  
+  margin: 5% 15px;
   box-shadow: 3em;
 }
 
@@ -40,11 +40,18 @@
 #btnDet {
   width: 100%;
   margin: 0 auto;
+  background-color: gray;
 }
 
-.row{
+h4 {
+  margin: 0;
+}
+
+.row {
   justify-content: center;
+  margin:0;
 }
 
-
-
+button {
+  width: 100%;
+}

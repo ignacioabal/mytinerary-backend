@@ -16,7 +16,7 @@ export default class Itinerary extends Component {
           <Details itinerary={itinerary}></Details>
         </div>
         <div className="row w-100">
-          <Activities acts={activities}></Activities>
+          <Activities acts={activities} itinId={_id}></Activities>
         </div>
       </article>
 
