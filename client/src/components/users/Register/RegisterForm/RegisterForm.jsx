@@ -12,15 +12,20 @@ export default class RegisterForm extends Component {
     password: '',
     firstName: '',
     lastName: '',
-    country: ''
+    country: 'England'
   }  
 
   handleChange = event => {
-    // this.setState({ {event.target.id}: )
+    
+    let field = event.target.id;
+    
+    this.setState({ [field]: event.target.value })
   }
 
   handleSubmit = event => {
+      let userData = this.state;
 
+      axios.post("localhost:5000/register",userData);
   }
 
   render() {
@@ -31,15 +36,15 @@ export default class RegisterForm extends Component {
           <Image></Image>
           <Form.Group>
             <Form.Label>Username</Form.Label>
-            <Form.Control onChange={} ></Form.Control>
+            <Form.Control onChange={this.handleChange} id="username"></Form.Control>
           </Form.Group>
           <Form.Group>
             <Form.Label>E-mail</Form.Label>
-            <Form.Control type='email'></Form.Control>
+            <Form.Control type='email' onChange={this.handleChange} id="email"></Form.Control>
           </Form.Group>
           <Form.Group>
             <Form.Label>Password</Form.Label>
-            <Form.Control type='password'></Form.Control>
+            <Form.Control type='password' onChange={this.handleChange} id="password"></Form.Control>
           </Form.Group>
           <Form.Group>
             <Form.Label>Confirm password</Form.Label>
@@ -47,15 +52,15 @@ export default class RegisterForm extends Component {
           </Form.Group>
           <Form.Group>
             <Form.Label>First name</Form.Label>
-            <Form.Control></Form.Control>
+            <Form.Control onChange={this.handleChange} id="firstName"></Form.Control>
           </Form.Group>
           <Form.Group>
             <Form.Label>Last name</Form.Label>
-            <Form.Control></Form.Control>
+            <Form.Control onChange={this.handleChange} id="lastName"></Form.Control>
           </Form.Group>
           <Form.Group>
-            <Form.Label>Country</Form.Label>
-            <Form.Control as='select'>
+            <Form.Label>Country</Form.Label>            
+            <Form.Control as='select' onChange={this.handleChange} id="country">
               <option value="England">England</option>
               <option value="France">France</option>
               <option value="Germany">Germany</option>
