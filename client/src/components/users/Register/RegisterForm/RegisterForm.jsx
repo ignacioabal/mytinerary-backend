@@ -1,31 +1,80 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import Image from "./UserImage";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import axios from 'axios'
-import {Formik} from 'formik'
+import { Convert } from 'mongo-image-converter'
+import { Formik } from 'formik'
 
 export default class RegisterForm extends Component {
-  state={
-    username: '',
-    email: '',
-    password: '',
-    firstName: '',
-    lastName: '',
-    country: 'England'
-  }  
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      username: '',
+      email: '',
+      password: '',
+      firstName: '',
+      lastName: '',
+      profPic: require("../../../../img/defaultAvatar.png"),
+      country: 'England',
+      image: '',
+      registrationStatus: ''
+    }
+  }
 
   handleChange = event => {
-    
+
     let field = event.target.id;
-    
+    if (field == 'profPic') return this.setState({ profPic: URL.createObjectURL(event.target.files[0]), image: event.target.files[0] })
     this.setState({ [field]: event.target.value })
   }
 
-  handleSubmit = event => {
-      let userData = this.state;
+  handleSubmit = async (event) => {
 
-      axios.post("localhost:5000/register",userData);
+    await this.convertImage(this.state.image);
+    let {username, email, password, firstName, lastName, profPic, country} = this.state
+    let userData = {
+      username: username,
+      email: email,
+      password: password,
+      firstName: firstName,
+      lastName: lastName,
+      profPic: profPic,
+      country: country,
+    }
+    console.log(userData)
+    axios.post("http://localhost:5000/register", userData);
+  }
+
+  convertImage = async (image) => {
+    try {
+      const imageString = await Convert(image)
+      if (imageString) {
+        this.setState({ profPic: imageString })
+      }
+      else {
+        this.setState({ registrationStatus: 'imageNotJpgOrPng' })
+      }
+    }
+    catch (error) {
+      console.warn(error.message)
+    }
+  }
+
+  convertUser = () => {
+    let {username, email, password, firstName, lastName, profPic, country} = this.state
+    let userData = {
+      username: username,
+      email: email,
+      password: password,
+      firstName: firstName,
+      lastName: lastName,
+      profPic: profPic,
+      country: country,
+    }
+
+    return userData;
   }
 
   render() {
@@ -33,7 +82,7 @@ export default class RegisterForm extends Component {
       <>
         <Form onSubmit={this.handleSubmit}>
           <h3>Create New Account</h3>
-          <Image></Image>
+          <Image handleChange={this.handleChange.bind(this)} image={this.state.profPic}></Image>
           <Form.Group>
             <Form.Label>Username</Form.Label>
             <Form.Control onChange={this.handleChange} id="username"></Form.Control>
@@ -59,7 +108,7 @@ export default class RegisterForm extends Component {
             <Form.Control onChange={this.handleChange} id="lastName"></Form.Control>
           </Form.Group>
           <Form.Group>
-            <Form.Label>Country</Form.Label>            
+            <Form.Label>Country</Form.Label>
             <Form.Control as='select' onChange={this.handleChange} id="country">
               <option value="England">England</option>
               <option value="France">France</option>
@@ -73,9 +122,9 @@ export default class RegisterForm extends Component {
           <Form.Group>
             <Form.Check type="checkbox" label="I agree MYtinerary's terms and conditions." />
             <Form.Text className="text/muted"><a href="#">Terms & Conditions</a></Form.Text>
-            <Button className="btnUserSubmit" type='submit' > Submit </Button>
+            <Button className="btnUserSubmit" onClick={this.handleSubmit} > Submit </Button>
           </Form.Group>
-        </Form>        
+        </Form>
       </>
     );
   }

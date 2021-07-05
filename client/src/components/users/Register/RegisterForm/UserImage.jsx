@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Form from 'react-bootstrap/Form'
 import "./style.css";
 
 export default class UserImage extends Component {
@@ -19,25 +20,26 @@ export default class UserImage extends Component {
 
   render() {
     return (
-      <>
+      <>        
         <div>
-          <label htmlFor="imgUpload">
+          <Form.Label htmlFor="profPic">
             <div
               className="border rounded-circle"
               id="userImg"
-              style={{ backgroundImage: `url("${this.state.file}")` }}
+              style={{ backgroundImage: `url("${this.props.image}")` }}
             ></div>
-            <label className="text-muted" htmlFor="imgUpload">
+            <Form.Label className="text-muted" htmlFor="profPic">
               Click to change
-            </label>
-          </label>
+            </Form.Label>
+          </Form.Label>
 
-          <input
+          <Form.Control type='file' id='profPic' onChange={this.props.handleChange}></Form.Control>
+          {/* <input
             className="form-control"
             type="file"
-            id="imgUpload"
-            onChange={this.handleChange}
-          />
+            id="profPic"
+            onChange={this.props.handleChange}
+          /> */}
         </div>
       </>
     );

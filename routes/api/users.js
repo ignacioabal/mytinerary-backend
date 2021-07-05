@@ -10,10 +10,10 @@ const { check, validationResult } = require("express-validator");
 const User = require("../../models/User");
 const validationArray = [
   check("email").notEmpty(),
-  check('email').isEmail(),
+  check('email').isEmail().withMessage("Invalid e-mail format."),
   check("username").notEmpty(),
-  check("firstname").notEmpty(),
-  check("lastname").notEmpty(),
+  check("firstName").notEmpty(),
+  check("lastName").notEmpty(),
   check("password").notEmpty()
 ];
 
@@ -25,6 +25,7 @@ router.post("/register", validationArray, (req, res) => {
   }
 
   User.findOne({ email: req.body.email }).then(user => {
+    let {username, email, password, firstName, lastName, profPic} = req.body
     if (user) {
       return res.status(400).json({ email: "Email already exists." });
     } else {
@@ -32,11 +33,10 @@ router.post("/register", validationArray, (req, res) => {
         username: req.body.username,
         email: req.body.email,
         password: req.body.password,
-        firstname: req.body.firstname,
-        lastname: req.body.lastname
-        // profPic: req.body.userpic
+        firstname: req.body.firstName,
+        lastname: req.body.lastName,
+        profPic: req.body.profPic
       });
-      console.log(newUser);
 
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, function (err, hash) {

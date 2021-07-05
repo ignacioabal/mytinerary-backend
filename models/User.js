@@ -24,8 +24,8 @@ let UserSchema = new Schema({
     require: true
   },
   profPic: {
-    type: String
-    //require: true
+    type: String,
+    require: true
   },
   register_date: {
     type: Date,
